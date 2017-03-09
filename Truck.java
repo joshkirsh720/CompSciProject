@@ -1,2 +1,5 @@
-"//Truck class" 
-"KYS JOSH"
+//Truck class
+
+public class Truck {
+	
+}

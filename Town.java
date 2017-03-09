@@ -1,1 +1,5 @@
-"//Town class" 
+//Town class 
+
+public class Town {
+	
+}
