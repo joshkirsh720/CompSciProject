@@ -14,7 +14,7 @@ public class ReadTextFile {
 
         try {
 
-            File f = new File("src/Untitled.txt");
+            File f = new File("Untitled.txt");
 
             BufferedReader bufferedReader = new BufferedReader(new FileReader(f));
 
