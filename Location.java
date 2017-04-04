@@ -24,6 +24,9 @@ public class Location {
 	public int getLocationType() {
 		return locationType;
 	}
+	public void setLocationType(int lt) {
+		locationType = lt;
+	}
 	public int[] getCoordinates() {
 		int[] coord = {x,y};
 		return coord;
