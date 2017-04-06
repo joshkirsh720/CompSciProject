@@ -10,7 +10,6 @@ public class Main {
     
     
 	public static void main(String[] args) throws IOException {
-		System.out.println("Hey");
         System.out.println(readFile());
 		//TODO
 	}
@@ -27,8 +26,6 @@ public class Main {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(f));
             
             String readLine = "";
-            
-            System.out.println("YAS");
             
             while ((readLine = bufferedReader.readLine()) != null) {
                 System.out.println(readLine);
