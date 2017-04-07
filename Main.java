@@ -130,7 +130,7 @@ public class Main {
 				houseLocation.add(cleanedList.get(x));
 			}
 			beginning = end;
-			System.out.println(3 + "" + houseLocation);
+			//System.out.println(3 + "" + houseLocation);
 			
 			finalList.add(determineLocation(houseLocation));
 		}

@@ -17,9 +17,13 @@ public class Truck {
 			for(int a = 0; a < list.size(); a++) {
 				if(optimalLocation == null) {
 					optimalLocation = list.get(a);
-					manDisToLocation = Math.abs(optimalLocation.getX() - )
+					manDisToLocation = Math.abs(optimalLocation.getX() - this.getX ) + Math.abs(optimalLocation.getY() - this.getY)
+                    
+        
 				}
-				else if() {
+				else {
+                    
+                    
 					
 				}
 			}
