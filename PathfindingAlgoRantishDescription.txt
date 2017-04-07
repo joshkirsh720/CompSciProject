@@ -1,0 +1,18 @@
+Okay so we take a list of all of the nodes (houses) and check the manhattan distance from the starting location to the house.
+Whichever node has the lowest manhattan distance, we go to and it is removed from the list.
+Repeat until done.
+
+FOR MOVEMENT:
+
+***THIS ONLY WORKS IF THE Y MOVEMENT IS POSITIVE***
+Take the current y and get rid of all other places save the ones place (104 -> 4)
+do 10 - the new number
+add that new number to the current y and subtract it from the total y movement
+add x movement to current x (cuz you're on an avenue)
+add the rest of the y (100 in this case)
+
+
+
+
+
+okay so the algo that I made earlier will actually work if they're on the same block b/c you can move up or down (depending on whether it's less than or greater than 5) and it will add or subtract it to the total movement (depending on whether it's less than or greater than 5) then  it will move all of  the x distance and then move the y.
