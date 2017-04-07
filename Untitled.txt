@@ -1,15 +1,15 @@
 1
 20
 1s,44a,E
-1s,11a,A
-1s,43a,A
-1s,3a,EE
-1s,30a,BB
-1s,5a,BB
-1s,34a,EE
-1s,12a,EE
-1s,31a,EE
-1s,47a,FF
+3s,11a,A
+7s,43a,A
+2s,3a,EE
+3s,30a,BB
+5s,5a,BB
+9s,34a,EE
+10s,12a,EE
+11s,31a,EE
+25s,47a,FF
 Bart Complex
 5
 Lisa Complex
