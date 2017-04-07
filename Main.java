@@ -15,6 +15,8 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		ArrayList<String> list = readFile();
 		ArrayList<Location> deliveryLocationList = convertStringArrayToLocations(list);
+		Town town = new Town();
+		town.init();
 		//TODO
 	}
     
@@ -96,7 +98,7 @@ public class Main {
 				}
 			}
 		}
-		System.out.println(1 + "" + separatedList);
+		//System.out.println(1 + "" + separatedList);
 		
 		//removes all unecessary letters like the s and a at the end of the first 2 elements in each location
 		for(int i = 0; i < separatedList.size(); i++) {
@@ -115,7 +117,7 @@ public class Main {
 			}
 			cleanedList.add(result);
 		}
-		System.out.println(2 + "" + cleanedList);
+		//System.out.println(2 + "" + cleanedList);
 		
 		//creates locations based off of what is now in the cleaned list and adds them to the final list
 		int countTo = packagesToDeliver - (bartDeliveries+lisaDeliveries);
@@ -158,14 +160,14 @@ public class Main {
 		if(houseLetter.length() == 2) {
 			x++;
 		}
-		System.out.println(3.5 + " " + x);
+		//System.out.println(3.5 + " " + x);
 		
 		//using avenue to get y
 		y = 10 * (avenue -1);
-		System.out.println(4 + " " + y);
+		//System.out.println(4 + " " + y);
 		//using ASCII value of the letter to find where the house is vertically in between avenues.
 		y += (int)houseLetterAsChar - 65;
-		System.out.println(5 + " " + y);
+		//System.out.println(5 + " " + y);
 		
 		finalLocation = new Location(x,y,0);
 		return finalLocation;
