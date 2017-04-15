@@ -16,7 +16,9 @@ public class Main {
 		ArrayList<String> list = readFile();
 		ArrayList<Location> deliveryLocationList = convertStringArrayToLocations(list);
 		Town town = new Town();
+		Truck truck = new Truck(2);
 		town.init();
+		truck.pathfind(deliveryLocationList);
 		//TODO
 	}
     

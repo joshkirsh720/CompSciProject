@@ -6,7 +6,7 @@ public class Town {
 	public Town() {
 	}
 	
-	public init() {
+	public void init() {
 		for(int x = 0; x <500; x++) {
 			for(int y = 0; y < 500; y++) {
 				town[x][y] = new Location(x,y,0);
@@ -31,5 +31,7 @@ public class Town {
 				}
 			}
 		}
+		
+		return;
 	}
 }

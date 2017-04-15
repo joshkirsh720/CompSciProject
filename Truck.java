@@ -1,4 +1,5 @@
 //Truck class
+import java.util.ArrayList;
 
 public class Truck {
     private int x, y, workers;
@@ -10,23 +11,41 @@ public class Truck {
 	}
 	
 	public void pathfind(ArrayList<Location> list) {
+		//entire loop, goes through the whole list and pathfinds to each one
+		System.out.println(list.size());
 		for(int i = 0; i < list.size(); i++) {
 			
 			Location optimalLocation = null;
-			int manDisToLocation = 0;
+			int optimalManDis = 0;
+			int indexOfOptimalLocation = -1;
+			//finds the optimal location to pathfind to based off of manhattan distance from the truck
 			for(int a = 0; a < list.size(); a++) {
-				if(optimalLocation == null) {
-					optimalLocation = list.get(a);
-					manDisToLocation = Math.abs(optimalLocation.getX() - this.getX ) + Math.abs(optimalLocation.getY() - this.getY)
-                    
-        
+				if(list.get(a) != null) {
+					if(optimalLocation == null) {
+						optimalLocation = list.get(a);
+						optimalManDis = Math.abs(optimalLocation.getX() - this.getX()) + Math.abs(optimalLocation.getY() - this.getY());
+						indexOfOptimalLocation = a;
+					}
+					else {
+						int testManDis = Math.abs(list.get(a).getX() - this.getX()) + Math.abs(list.get(a).getY() - this.getY());
+						
+						if(testManDis < optimalManDis) {
+							optimalLocation = list.get(a);
+							optimalManDis = testManDis;
+							indexOfOptimalLocation = a;
+						}
+					}
 				}
 				else {
-                    
-                    
-					
+					continue;
 				}
 			}
+			list.set(indexOfOptimalLocation, null);
+			
+			
+			//AFTER OPTIMAL LOCATION IS FOUND
+			//pathfinds to optimal location
+			
 		}
 	}
 	
