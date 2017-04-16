@@ -83,7 +83,26 @@ public class Truck {
 				System.out.println(this.getY());
 			}
 			else {
+				System.out.println("SAME Y");
+				System.out.println(yMovement);
+				System.out.println(this.getY());
+				int roundedY = this.getY() / 10 * 10;
+				int difference = this.getY() - roundedY;
 				
+				if(difference >= 5) {
+					int moveUp = 10 - difference;
+					System.out.println(moveUp);
+					this.move(0, moveUp);
+					System.out.println(this.getY());
+					yMovement -= moveUp;
+					System.out.println(yMovement);
+				}
+				else {
+					this.move(0, -1 * difference);
+					System.out.println(this.getY());
+					yMovement += difference;
+					System.out.println(yMovement);
+				}
 			}
 		}
 		System.out.println("(" + this.getX() + ", " + this.getY() + ")");
