@@ -12,7 +12,7 @@ public class Truck {
 	
 	public void pathfind(ArrayList<Location> list) {
 		//entire loop, goes through the whole list and pathfinds to each one
-		System.out.println(list.size());
+		
 		for(int i = 0; i < list.size(); i++) {
 			
 			Location optimalLocation = null;
@@ -45,10 +45,52 @@ public class Truck {
 			
 			//AFTER OPTIMAL LOCATION IS FOUND
 			//pathfinds to optimal location
-			
+			this.navigateTo(optimalLocation);
 		}
 	}
 	
+	private void navigateTo(Location location) {
+		int xMovement = location.getX() - this.getX();
+		int yMovement = location.getY() - this.getY();
+		
+		//moves the truck on to an avenue based off of where the truck's destination is
+		if(this.getY() % 10 != 0) {
+			//MAKE SURE TO TRACK TIME AND MONEY ON THIS PART
+			if(yMovement < 0) {
+				System.out.println("NEGATIVE MOVEMENT");
+				System.out.println(yMovement);
+				System.out.println(this.getY());
+				int roundedY = this.getY() / 10 * 10;
+				int difference = this.getY() - roundedY;
+				System.out.println(difference);
+				this.move(0, -1 * difference);
+				yMovement +=  difference;
+				System.out.println(yMovement);
+				System.out.println(this.getY());
+			}
+			else if(yMovement > 0) {
+				System.out.println("POSITIVE MOVEMENT");
+				System.out.println(yMovement);
+				System.out.println(this.getY());
+				int roundedY = this.getY() / 10 * 10;
+				int difference = this.getY() - roundedY;
+				System.out.println(difference);
+				int up = 10 - difference;
+				System.out.println(up);
+				this.move(0, up);
+				yMovement -= up;
+				System.out.println(yMovement);
+				System.out.println(this.getY());
+			}
+			else {
+				
+			}
+		}
+		System.out.println("(" + this.getX() + ", " + this.getY() + ")");
+		this.move(xMovement, yMovement);
+		System.out.println("(" + this.getX() + ", " + this.getY() + ")" + "\n");
+		if(this.getX() == location.getX() && this.getY() == location.getY()) System.out.println("it works :)");
+	}
 	
 	public int getX() {
 		return x;
@@ -62,6 +104,11 @@ public class Truck {
 	}
 	public void setY(int yVal) {
 		y = yVal;
+	}
+	
+	public void move(int xMove, int yMove) {
+		x += xMove;
+		y += yMove;
 	}
 	
 	public int getWorkers() {
