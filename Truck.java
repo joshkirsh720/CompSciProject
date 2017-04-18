@@ -2,7 +2,8 @@
 import java.util.ArrayList;
 
 public class Truck {
-    private int x, y, workers;
+    private int x, y, workers, time;
+    
     
 	public Truck(int w) {
 		x = 249;
@@ -64,6 +65,9 @@ public class Truck {
 				int difference = this.getY() - roundedY;
 				System.out.println(difference);
 				this.move(0, -1 * difference);
+                addTime(Math.abs(difference)*3);
+                
+                
 				yMovement +=  difference;
 				System.out.println(yMovement);
 				System.out.println(this.getY());
@@ -78,6 +82,8 @@ public class Truck {
 				int up = 10 - difference;
 				System.out.println(up);
 				this.move(0, up);
+                addTime(up*3);
+
 				yMovement -= up;
 				System.out.println(yMovement);
 				System.out.println(this.getY());
@@ -93,12 +99,16 @@ public class Truck {
 					int moveUp = 10 - difference;
 					System.out.println(moveUp);
 					this.move(0, moveUp);
+                    addTime(Math.abs(moveUp)*3);
+
 					System.out.println(this.getY());
 					yMovement -= moveUp;
 					System.out.println(yMovement);
 				}
 				else {
 					this.move(0, -1 * difference);
+                    addTime(Math.abs(difference)*3);
+
 					System.out.println(this.getY());
 					yMovement += difference;
 					System.out.println(yMovement);
@@ -107,8 +117,10 @@ public class Truck {
 		}
 		System.out.println("(" + this.getX() + ", " + this.getY() + ")");
 		this.move(xMovement, yMovement);
+        addTime((Math.abs(yMovement)*3)+(Math.abs(xMovement)*3));
 		System.out.println("(" + this.getX() + ", " + this.getY() + ")");
 		if(this.getX() == location.getX() && this.getY() == location.getY()) System.out.println("it works :)" + "\n");
+        System.out.println("The time in Hours Is " + ( gettime()/3600 ));
 	}
 	
 	public int getX() {
@@ -124,6 +136,15 @@ public class Truck {
 	public void setY(int yVal) {
 		y = yVal;
 	}
+    public void addTime(int MoreTime){
+    
+        time = MoreTime + time;
+    }
+    public double gettime(){
+        return (double)time;
+    
+    }
+    
 	
 	public void move(int xMove, int yMove) {
 		x += xMove;
