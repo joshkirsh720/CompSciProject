@@ -107,8 +107,8 @@ public class Truck {
 		}
 		System.out.println("(" + this.getX() + ", " + this.getY() + ")");
 		this.move(xMovement, yMovement);
-		System.out.println("(" + this.getX() + ", " + this.getY() + ")" + "\n");
-		if(this.getX() == location.getX() && this.getY() == location.getY()) System.out.println("it works :)");
+		System.out.println("(" + this.getX() + ", " + this.getY() + ")");
+		if(this.getX() == location.getX() && this.getY() == location.getY()) System.out.println("it works :)" + "\n");
 	}
 	
 	public int getX() {
