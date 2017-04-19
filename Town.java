@@ -17,17 +17,17 @@ public class Town {
 				
 				//setting bart complex location
 				if((x>2 && x<=4) && (y>20 && y<=30)) {
-					town[x][y].setLocationType(1);
+					town[x][y].setType(1);
 				}
 				
 				//setting lisa complex location
 				if((x>296 && x<=298) && (y>320 && y<=330)) {
-					town[x][y].setLocationType(2);
+					town[x][y].setType(2);
 				}
 				
 				//setting delivery center location
 				if((x>248 && x<=250) && (y>210 && y<=220)) {
-					town[x][y].setLocationType(3);
+					town[x][y].setType(3);
 				}
 			}
 		}

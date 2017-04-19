@@ -21,10 +21,10 @@ public class Location {
 	public int getY() {
 		return y;
 	}
-	public int getLocationType() {
+	public int getType() {
 		return locationType;
 	}
-	public void setLocationType(int lt) {
+	public void setType(int lt) {
 		locationType = lt;
 	}
 	public int[] getCoordinates() {

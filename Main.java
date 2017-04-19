@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Main {
     
-	static int bartDeliveries, lisaDeliveries, packagesToDeliver;
+	static int bartDeliveries = 0, lisaDeliveries = 0, packagesToDeliver;
 	static Location bartComplexLocation = new Location(3,29,1);
 	static Location lisaComplexLocation = new Location(297,329,2);
     
@@ -16,14 +16,14 @@ public class Main {
 		ArrayList<String> list = readFile();
 		ArrayList<Location> deliveryLocationList = convertStringArrayToLocations(list);
 		Town town = new Town();
-		Truck truck = new Truck(2);
+		Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
 		town.init();
 		truck.pathfind(deliveryLocationList);
 		//TODO
 	}
-    
-    
-    
+	
+	
+	
     public static ArrayList<String> readFile() throws IOException {
         ArrayList<String> list = new ArrayList<String>();
 		

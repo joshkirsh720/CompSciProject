@@ -3,12 +3,15 @@ import java.util.ArrayList;
 
 public class Truck {
     private int x, y, workers, time;
+	private int bartDeliveries, lisaDeliveries;
     
     
-	public Truck(int w) {
+	public Truck(int w, int bD, int lD) {
 		x = 249;
 		y = 219;
 		workers = w;
+		bartDeliveries = bD;
+		lisaDeliveries = lD;
 	}
 	
 	public void pathfind(ArrayList<Location> list) {
@@ -57,7 +60,7 @@ public class Truck {
 		//moves the truck on to an avenue based off of where the truck's destination is
 		if(this.getY() % 10 != 0) {
 			//MAKE SURE TO TRACK TIME AND MONEY ON THIS PART
-			if(yMovement < 0) {
+			if(yMovement < 0 && xMovement != 0) {
 				System.out.println("NEGATIVE MOVEMENT");
 				System.out.println(yMovement);
 				System.out.println(this.getY());
@@ -72,7 +75,7 @@ public class Truck {
 				System.out.println(yMovement);
 				System.out.println(this.getY());
 			}
-			else if(yMovement > 0) {
+			else if(yMovement > 0 && xMovement != 0) {
 				System.out.println("POSITIVE MOVEMENT");
 				System.out.println(yMovement);
 				System.out.println(this.getY());
@@ -88,7 +91,7 @@ public class Truck {
 				System.out.println(yMovement);
 				System.out.println(this.getY());
 			}
-			else {
+			else if(yMovement == 0 && xMovement != 0){
 				System.out.println("SAME Y");
 				System.out.println(yMovement);
 				System.out.println(this.getY());
@@ -120,6 +123,19 @@ public class Truck {
         addTime((Math.abs(yMovement)*3)+(Math.abs(xMovement)*3));
 		System.out.println("(" + this.getX() + ", " + this.getY() + ")");
 		if(this.getX() == location.getX() && this.getY() == location.getY()) System.out.println("it works :)" + "\n");
+		if(location.getType() == 0) {
+			addTime(60);
+		}
+		else if(location.getType() == 1){
+			for(int i = 0; i < bartDeliveries; i++) {
+				addTime(60);
+			}
+		}
+		else if(location.getType() == 2) {
+			for(int i = 0; i < lisaDeliveries; i++) {
+				addTime(60);
+			}
+		}
         System.out.println("The time in Hours Is " + ( gettime()/3600 ));
 	}
 	
