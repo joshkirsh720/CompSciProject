@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     
@@ -13,12 +14,19 @@ public class Main {
 	static Location lisaComplexLocation = new Location(297,329,2);
     
 	public static void main(String[] args) throws IOException {
+		Scanner scan = new Scanner(System.in);
+		System.out.print("how many trucks you want bb?");
+		int trucks = scan.nextInt();
+		
 		ArrayList<String> list = readFile();
 		ArrayList<Location> deliveryLocationList = convertStringArrayToLocations(list);
 		Town town = new Town();
-		Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
 		town.init();
-		truck.pathfind(deliveryLocationList);
+		
+		for(int i = 0; i < trucks; i++) {
+			Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
+			truck.pathfind(deliveryLocationList);
+		}
 		//TODO
 	}
 	

@@ -124,16 +124,16 @@ public class Truck {
 		System.out.println("(" + this.getX() + ", " + this.getY() + ")");
 		if(this.getX() == location.getX() && this.getY() == location.getY()) System.out.println("it works :)" + "\n");
 		if(location.getType() == 0) {
-			addTime(60);
+			addPackageTime();
 		}
 		else if(location.getType() == 1){
 			for(int i = 0; i < bartDeliveries; i++) {
-				addTime(60);
+				addPackageTime();
 			}
 		}
 		else if(location.getType() == 2) {
 			for(int i = 0; i < lisaDeliveries; i++) {
-				addTime(60);
+				addPackageTime();
 			}
 		}
         System.out.println("The time in Hours Is " + ( gettime()/3600 ));
@@ -153,9 +153,17 @@ public class Truck {
 		y = yVal;
 	}
     public void addTime(int MoreTime){
-    
-        time = MoreTime + time;
+        time += MoreTime;
     }
+	public void addPackageTime() {
+		if (this.getWorkers() == 1) {
+			addTime(60);
+		}
+		else {
+			addTime(30);
+		}
+	}
+	
     public double gettime(){
         return (double)time;
     
