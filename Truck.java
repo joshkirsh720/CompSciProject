@@ -16,6 +16,7 @@ public class Truck {
 	
 	public void pathfind(ArrayList<Location> list) {
 		//entire loop, goes through the whole list and pathfinds to each one
+        
 		
 		for(int i = 0; i < list.size(); i++) {
 			

@@ -22,10 +22,13 @@ public class Main {
 		ArrayList<Location> deliveryLocationList = convertStringArrayToLocations(list);
 		Town town = new Town();
 		town.init();
+        
 		
 		for(int i = 0; i < trucks; i++) {
+        
 			Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
 			truck.pathfind(deliveryLocationList);
+            
 		}
 		//TODO
 	}
@@ -182,4 +185,6 @@ public class Main {
 		finalLocation = new Location(x,y,0);
 		return finalLocation;
 	}
+
+
 }
