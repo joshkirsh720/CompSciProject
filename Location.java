@@ -31,4 +31,9 @@ public class Location {
 		int[] coord = {x,y};
 		return coord;
 	}
+	
+	public String toString() {
+		String string = "(" + this.getX() + ", " + this.getY() + ")";
+		return string;
+	}
 }

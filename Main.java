@@ -23,13 +23,14 @@ public class Main {
 		Town town = new Town();
 		town.init();
         
+		ArrayList<Location>[] chunks = splitList(deliveryLocationList, 100);
 		
-		for(int i = 0; i < trucks; i++) {
+		/*for(int i = 0; i < trucks; i++) {
         
 			Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
 			truck.pathfind(deliveryLocationList);
             
-		}
+		}*/
 		//TODO
 	}
 	
@@ -186,5 +187,27 @@ public class Main {
 		return finalLocation;
 	}
 
-
+	public static ArrayList<Location>[] splitList(ArrayList<Location> list, int n) {
+		int split = list.size() / n;
+		int beginning=0, end=split;
+		int counter=0;
+		ArrayList<Location>[] splitList = new ArrayList<Location>[n];
+		
+		
+		for(int i = beginning; i < list.size(); i += split) {
+			splitList[counter] = (ArrayList<Location>)list.subList(beginning, end);
+			beginning = end;
+			end = i+split;
+			counter++;
+			if(end+split == list.size()) {
+				splitList[counter] = (ArrayList<Location>)list.subList(end, list.size());
+				break;
+			}
+		}
+		for(int i = 0; i < splitList.length; i++) {
+			System.out.println(splitList[i]);
+		}
+		
+		return splitList;
+	}
 }
