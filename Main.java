@@ -191,7 +191,7 @@ public class Main {
 		int split = list.size() / n;
 		int beginning=0, end=split;
 		int counter=0;
-		ArrayList<Location>[] splitList = new ArrayList<Location>[n];
+		ArrayList[] splitList = new ArrayList[n];
 		
 		
 		for(int i = beginning; i < list.size(); i += split) {
