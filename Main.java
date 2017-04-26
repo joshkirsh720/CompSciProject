@@ -24,6 +24,7 @@ public class Main {
 		town.init();
         
 		ArrayList<Location>[] chunks = splitList(deliveryLocationList, trucks);
+        System.out.println(deliveryLocationList.get(deliveryLocationList.size() - 1));
 		
 		/*for(int i = 0; i < trucks; i++) {
         
@@ -193,16 +194,30 @@ public class Main {
 		int counter=0;
 		ArrayList[] splitList = new ArrayList[n];
 		
-		for(int i = beginning; i < list.size() - 2; i += split) {
-			splitList[counter] = new ArrayList<Location>(list.subList(beginning, end));
+		for(int i = beginning; i < list.size() ; i += split) {
             System.out.println(splitList.length);
+            System.out.println(counter);
+			splitList[counter] = new ArrayList<Location>(list.subList(beginning, end));
+            
 			beginning = end;
 			end = i+split;
-			counter++;
-			if(end+split == list.size()) {
-				splitList[counter] = new ArrayList<Location>(list.subList(end, list.size()));
+			if(end+split  >= list.size() ) {
+                System.out.println(end);
+                System.out.println(list.size());
+                System.out.println(counter);
+                System.out.println(splitList.length);
+                
+                
+				splitList[counter] = new ArrayList<Location>(list.subList(end, list.size() ));
+                
+
+
+
+                
 				break;
 			}
+            counter++;
+
 		}
 		for(int i = 0; i < splitList.length; i++) {
 			System.out.println(splitList[i]);
