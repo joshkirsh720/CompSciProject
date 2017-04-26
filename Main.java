@@ -24,14 +24,26 @@ public class Main {
 		town.init();
         
 		ArrayList<Location>[] chunks = splitList(deliveryLocationList, trucks);
-        System.out.println(deliveryLocationList.get(deliveryLocationList.size() - 1));
 		
-		/*for(int i = 0; i < trucks; i++) {
-        
+		double max = -1;
+		if(trucks == 1) {
 			Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
 			truck.pathfind(deliveryLocationList);
-            
-		}*/
+			max = truck.getTime();
+		}
+		
+		for(int i = 0; i < trucks; i++) {
+        
+			Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
+			truck.pathfind(chunks[i]);
+			if(max == -1) {
+				max = truck.getTime();
+			}
+            else if(truck.getTime() > max) {
+				max = truck.getTime();
+			}
+		}
+		System.out.println("Total time for " + trucks + " trucks to deliver is " + (max/3600) + " hours");
 		//TODO
 	}
 	

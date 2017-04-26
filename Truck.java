@@ -137,7 +137,7 @@ public class Truck {
 				addPackageTime();
 			}
 		}
-        System.out.println("The time in Hours Is " + ( gettime()/3600 ));
+        System.out.println("The time in Hours Is " + ( this.getTime()/3600 ));
 	}
 	
 	public int getX() {
@@ -165,7 +165,7 @@ public class Truck {
 		}
 	}
 	
-    public double gettime(){
+    public double getTime(){
         return (double)time;
     
     }
