@@ -16,12 +16,17 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		Scanner scan = new Scanner(System.in);
 		System.out.print("how many trucks you want bb?");
-		int trucks = scan.nextInt();
-		
+        
+        
+	
+        for(int III = 1; III < 100; III++){
+            int trucks = III;
+            
 		ArrayList<String> list = readFile();
 		ArrayList<Location> deliveryLocationList = convertStringArrayToLocations(list);
 		Town town = new Town();
 		town.init();
+        
         
 		ArrayList<Location>[] chunks = splitList(deliveryLocationList, trucks);
 		
@@ -44,6 +49,20 @@ public class Main {
 			}
 		}
 		System.out.println("Total time for " + trucks + " trucks to deliver is " + (max/3600) + " hours");
+            if((max/3600) < 24 ){
+                //HERE IS THE OUTPUT
+                System.out.println("the answer is " + trucks);
+                
+
+                
+                
+                break;
+                
+            
+            
+            }
+        
+        }
 		//TODO
 	}
 	
