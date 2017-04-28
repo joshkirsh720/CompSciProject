@@ -14,11 +14,6 @@ public class Main {
 	static Location lisaComplexLocation = new Location(297,329,2);
     
 	public static void main(String[] args) throws IOException {
-		Scanner scan = new Scanner(System.in);
-		System.out.print("how many trucks you want bb?");
-        
-        
-	
         for(int III = 1; III < 100; III++){
             int trucks = III;
             
