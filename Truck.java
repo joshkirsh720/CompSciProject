@@ -158,8 +158,10 @@ public class Truck {
     }
 	public void addPackageTime() {
 		if (this.getWorkers() == 1) {
-			addTime(60);
-		}
+            addTime(60);
+
+        
+        }
 		else {
 			addTime(30);
 		}

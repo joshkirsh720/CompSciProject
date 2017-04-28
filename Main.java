@@ -45,8 +45,40 @@ public class Main {
 		}
 		System.out.println("Total time for " + trucks + " trucks to deliver is " + (max/3600) + " hours");
             if((max/3600) < 24 ){
+                double totalCost;
                 //HERE IS THE OUTPUT
                 System.out.println("the answer is " + trucks);
+                
+                double numberOfBlocks = truck.getTime() / 3;
+                double distanceInFeet = numberOfBlocks * 1000;
+                System.out.println(distance + " is the total distance");
+                double distanceInMiles = distanceInFeet / 5000;
+                
+                //COST OF TRUCKS
+                totalCost = 100,000 * trucks;
+                totalCost = totalCost + (distanceInMiles * 5);
+                
+                double MaintaincesCost = (distanceInMiles/100) *  1000;
+                totalCost = totalCost + MaintaincesCost;
+                
+                
+                //COstOfEmployees
+                
+                double numberOfEmployees = trucks * 2;
+                double htime = max/3600;
+                double BaseCost = 8 * numberOfEmployees * 30;
+                htime = htime - 8;
+                
+                //THEN DO THE COST FOR THE ADDITIONAL TIME
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
 
                 
