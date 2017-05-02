@@ -55,7 +55,7 @@ public class Main {
                 double distanceInMiles = distanceInFeet / 5000;
                 
                 //COST OF TRUCKS
-                totalCost = 100,000 * trucks;
+                totalCost = 100000 * trucks;
                 totalCost = totalCost + (distanceInMiles * 5);
                 
                 double MaintaincesCost = (distanceInMiles/100) *  1000;
@@ -64,7 +64,7 @@ public class Main {
                 
                 //COstOfEmployees
                 
-                double numberOfEmployees = trucks * 2;
+                double numberOfEmployees = truck.getWorkers();
                 double htime = max/3600;
                 double BaseCost = 8 * numberOfEmployees * 30;
                 htime = htime - 8;
