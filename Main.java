@@ -14,80 +14,39 @@ public class Main {
 	static Location lisaComplexLocation = new Location(297,329,2);
     
 	public static void main(String[] args) throws IOException {
+		Town town = new Town();
+		town.init();
+		
         for(int III = 1; III < 100; III++){
             int trucks = III;
             
-		ArrayList<String> list = readFile();
-		ArrayList<Location> deliveryLocationList = convertStringArrayToLocations(list);
-		Town town = new Town();
-		town.init();
-        
-        
-		ArrayList<Location>[] chunks = splitList(deliveryLocationList, trucks);
-		
-		double max = -1;
-		if(trucks == 1) {
-			Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
-			truck.pathfind(deliveryLocationList);
-			max = truck.getTime();
-		}
-		
-		for(int i = 0; i < trucks; i++) {
-        
-			Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
-			truck.pathfind(chunks[i]);
-			if(max == -1) {
+			ArrayList<String> list = readFile();
+			ArrayList<Location> deliveryLocationList = convertStringArrayToLocations(list);
+			
+			ArrayList<Location>[] chunks = splitList(deliveryLocationList, trucks);
+			
+			double max = -1;
+			if(trucks == 1) {
+				Truck truck = new Truck(1, bartDeliveries, lisaDeliveries);
+				truck.pathfind(deliveryLocationList);
 				max = truck.getTime();
 			}
-            else if(truck.getTime() > max) {
-				max = truck.getTime();
+			
+			for(int i = 0; i < trucks; i++) {
+			
+				Truck truck = new Truck(1, bartDeliveries, lisaDeliveries);
+				truck.pathfind(chunks[i]);
+				if(max == -1) {
+					max = truck.getTime();
+				}
+				else if(truck.getTime() > max) {
+					max = truck.getTime();
+				}
 			}
-		}
-		System.out.println("Total time for " + trucks + " trucks to deliver is " + (max/3600) + " hours");
-            if((max/3600) < 24 ){
-                double totalCost;
-                //HERE IS THE OUTPUT
-                System.out.println("the answer is " + trucks);
-                
-                double numberOfBlocks = truck.getTime() / 3;
-                double distanceInFeet = numberOfBlocks * 1000;
-                System.out.println(distance + " is the total distance");
-                double distanceInMiles = distanceInFeet / 5000;
-                
-                //COST OF TRUCKS
-                totalCost = 100000 * trucks;
-                totalCost = totalCost + (distanceInMiles * 5);
-                
-                double MaintaincesCost = (distanceInMiles/100) *  1000;
-                totalCost = totalCost + MaintaincesCost;
-                
-                
-                //COstOfEmployees
-                
-                double numberOfEmployees = truck.getWorkers();
-                double htime = max/3600;
-                double BaseCost = 8 * numberOfEmployees * 30;
-                htime = htime - 8;
-                
-                //THEN DO THE COST FOR THE ADDITIONAL TIME
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-
-                
-                
-                break;
-                
-            
-            
-            }
+			System.out.println("Total time for " + trucks + " trucks to deliver is " + (max/3600) + " hours");
+				if((max/3600) < 24 ){
+					break;
+				}
         
         }
 		//TODO
