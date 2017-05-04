@@ -27,14 +27,14 @@ public class Main {
 			
 			double max = -1;
 			if(trucks == 1) {
-				Truck truck = new Truck(1, bartDeliveries, lisaDeliveries);
+				Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
 				truck.pathfind(deliveryLocationList);
 				max = truck.getTime();
 			}
 			
 			for(int i = 0; i < trucks; i++) {
 			
-				Truck truck = new Truck(1, bartDeliveries, lisaDeliveries);
+				Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
 				truck.pathfind(chunks[i]);
 				if(max == -1) {
 					max = truck.getTime();
@@ -157,7 +157,8 @@ public class Main {
 		for(int i = 1; i <= countTo; i++) {
 			ArrayList<String> houseLocation = new ArrayList<String>();
 			
-			int end = (3 * i);
+			int end = 3*i;
+			
 			for(int x = beginning; x < end; x++) {
 				houseLocation.add(cleanedList.get(x));
 			}

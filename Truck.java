@@ -62,68 +62,39 @@ public class Truck {
 		if(this.getY() % 10 != 0) {
 			//MAKE SURE TO TRACK TIME AND MONEY ON THIS PART
 			if(yMovement < 0 && xMovement != 0) {
-				System.out.println("NEGATIVE MOVEMENT");
-				System.out.println(yMovement);
-				System.out.println(this.getY());
 				int roundedY = this.getY() / 10 * 10;
 				int difference = this.getY() - roundedY;
-				System.out.println(difference);
 				this.move(0, -1 * difference);
                 addTime(Math.abs(difference)*3);
-                
-                
 				yMovement +=  difference;
-				System.out.println(yMovement);
-				System.out.println(this.getY());
 			}
 			else if(yMovement > 0 && xMovement != 0) {
-				System.out.println("POSITIVE MOVEMENT");
-				System.out.println(yMovement);
-				System.out.println(this.getY());
 				int roundedY = this.getY() / 10 * 10;
 				int difference = this.getY() - roundedY;
-				System.out.println(difference);
 				int up = 10 - difference;
-				System.out.println(up);
 				this.move(0, up);
                 addTime(up*3);
-
 				yMovement -= up;
-				System.out.println(yMovement);
-				System.out.println(this.getY());
 			}
 			else if(yMovement == 0 && xMovement != 0){
-				System.out.println("SAME Y");
-				System.out.println(yMovement);
-				System.out.println(this.getY());
 				int roundedY = this.getY() / 10 * 10;
 				int difference = this.getY() - roundedY;
 				
 				if(difference >= 5) {
 					int moveUp = 10 - difference;
-					System.out.println(moveUp);
 					this.move(0, moveUp);
                     addTime(Math.abs(moveUp)*3);
-
-					System.out.println(this.getY());
 					yMovement -= moveUp;
-					System.out.println(yMovement);
 				}
 				else {
 					this.move(0, -1 * difference);
                     addTime(Math.abs(difference)*3);
-
-					System.out.println(this.getY());
 					yMovement += difference;
-					System.out.println(yMovement);
 				}
 			}
 		}
-		System.out.println("(" + this.getX() + ", " + this.getY() + ")");
 		this.move(xMovement, yMovement);
         addTime((Math.abs(yMovement)*3)+(Math.abs(xMovement)*3));
-		System.out.println("(" + this.getX() + ", " + this.getY() + ")");
-		if(this.getX() == location.getX() && this.getY() == location.getY()) System.out.println("it works :)" + "\n");
 		if(location.getType() == 0) {
 			addPackageTime();
 		}
@@ -158,7 +129,6 @@ public class Truck {
     }
 	public void addPackageTime() {
 		if (this.getWorkers() == 1) {
-			System.out.println("hey");
             addTime(60);
         }
 		else {
