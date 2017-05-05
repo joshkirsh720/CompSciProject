@@ -31,7 +31,6 @@ public class Main {
 				truck.pathfind(deliveryLocationList);
 				max = truck.getTime();
 			}
-			
 			for(int i = 0; i < trucks; i++) {
 			
 				Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
@@ -43,8 +42,9 @@ public class Main {
 					max = truck.getTime();
 				}
 			}
-			System.out.println("Total time for " + trucks + " trucks to deliver is " + (max/3600) + " hours");
+			System.out.println(III + "Total time for " + trucks + " trucks to deliver is " + (max/3600) + " hours");
 				if((max/3600) < 24 ){
+					System.out.println("done");
 					break;
 				}
         
