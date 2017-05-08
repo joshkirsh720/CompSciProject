@@ -1,4 +1,4 @@
-
+//shalom
  
 public class Town {
 	private Location[][] town = new Location[500][500];
