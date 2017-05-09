@@ -17,30 +17,32 @@ public class Main {
 		Town town = new Town();
 		town.init();
 		
+        
+        
         for(int III = 1; III < 100; III++){
             int trucks = III;
             
-			ArrayList<String> list = readFile();
-			ArrayList<Location> deliveryLocationList = convertStringArrayToLocations(list);
-			
-			ArrayList<Location>[] chunks = splitList(deliveryLocationList, trucks);
-			
+            ArrayList<String> list = readFile();
+            ArrayList<Location> deliveryLocationList = convertStringArrayToLocations(list);
+            ArrayList<Location>[] chunks = splitList(deliveryLocationList, trucks);
+            
 			double max = -1;
 			if(trucks == 1) {
-				Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
+				Truck truck = new Truck(1, bartDeliveries, lisaDeliveries);
 				truck.pathfind(deliveryLocationList);
 				max = truck.getTime();
 			}
-			for(int i = 0; i < trucks; i++) {
-			
-				Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
-				truck.pathfind(chunks[i]);
-				if(max == -1) {
-					max = truck.getTime();
-				}
-				else if(truck.getTime() > max) {
-					max = truck.getTime();
-				}
+            else {
+                for(int i = 0; i < trucks; i++) {
+                    Truck truck = new Truck(1, bartDeliveries, lisaDeliveries);
+                    truck.pathfind(chunks[i]);
+                    if(max == -1) {
+                        max = truck.getTime();
+                    }
+                    else if(truck.getTime() > max) {
+                        max = truck.getTime();
+                    }
+                }
 			}
 			System.out.println(III + "Total time for " + trucks + " trucks to deliver is " + (max/3600) + " hours");
 				if((max/3600) < 24 ){
