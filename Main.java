@@ -221,7 +221,7 @@ public class Main {
             
 			beginning = end;
 			end = i+split;
-			if(end+split  >= list.size() ) {
+			if(end+split  > list.size() ) {
                 System.out.println(end);
                 System.out.println(list.size());
                 System.out.println(counter);
