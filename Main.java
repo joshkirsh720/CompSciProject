@@ -166,7 +166,13 @@ public class Main {
                 
                 
 
-                
+                if (x >= cleanedList.size() - 1){
+                    System.out.println("Im Breaking JESE");
+                    System.out.println(x);
+                    System.out.println(cleanedList.size());
+
+                    break;
+                }
 				houseLocation.add(cleanedList.get(x));
 			}
 			beginning = end;
