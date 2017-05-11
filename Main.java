@@ -162,6 +162,11 @@ public class Main {
 			int end = 3*i;
 			
 			for(int x = beginning; x < end; x++) {
+                System.out.println(x + "x=");
+                
+                
+
+                
 				houseLocation.add(cleanedList.get(x));
 			}
 			beginning = end;
