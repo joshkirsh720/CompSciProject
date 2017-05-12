@@ -154,11 +154,12 @@ public class Main {
 		//System.out.println(2 + "" + cleanedList);
 		
 		//creates locations based off of what is now in the cleaned list and adds them to the final list
-		int countTo = packagesToDeliver - (bartDeliveries+lisaDeliveries);
+        System.out.println(bartDeliveries+lisaDeliveries + "YAYAYAYAYYAYAYAYAY JOAWSH");
+		int countTo = packagesToDeliver - (bartDeliveries+lisaDeliveries) ;
 		int beginning = 0;
-		for(int i = 1; i <= countTo; i++) {
+		for(int i = 1; i < countTo  ; i++) {
 			ArrayList<String> houseLocation = new ArrayList<String>();
-			
+            System.out.println(countTo / 3.0 + "LOLZ");
 			int end = 3*i;
 			
 			for(int x = beginning; x < end; x++) {
@@ -166,21 +167,18 @@ public class Main {
                 
                 
 
-                if (x >= cleanedList.size() - 1){
-                    System.out.println("Im Breaking JESE");
-                    System.out.println(x);
-                    System.out.println(cleanedList.size());
-
-                    break;
-                }
-				houseLocation.add(cleanedList.get(x));
+                houseLocation.add(cleanedList.get(x));
 			}
 			beginning = end;
 			//System.out.println(3 + "" + houseLocation);
 			
 			finalList.add(determineLocation(houseLocation));
 		}
-		
+        System.out.println("YAS JOSH");
+        System.out.println(bartDeliveries);
+        System.out.println(lisaDeliveries);
+
+        
 		if(bartDeliveries != 0) {
 			finalList.add(bartComplexLocation);
 		}
