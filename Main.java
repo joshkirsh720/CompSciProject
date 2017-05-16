@@ -28,13 +28,13 @@ public class Main {
             
 			double max = -1;
 			if(trucks == 1) {
-				Truck truck = new Truck(1, bartDeliveries, lisaDeliveries);
+				Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
 				truck.pathfind(deliveryLocationList);
 				max = truck.getTime();
 			}
             else {
                 for(int i = 0; i < trucks; i++) {
-                    Truck truck = new Truck(1, bartDeliveries, lisaDeliveries);
+                    Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
                     truck.pathfind(chunks[i]);
                     if(max == -1) {
                         max = truck.getTime();
@@ -155,7 +155,7 @@ public class Main {
 		
 		//creates locations based off of what is now in the cleaned list and adds them to the final list
         System.out.println(bartDeliveries+lisaDeliveries + "YAYAYAYAYYAYAYAYAY JOAWSH");
-		int countTo = packagesToDeliver - (bartDeliveries+lisaDeliveries) ;
+		int countTo = packagesToDeliver - (bartDeliveries+lisaDeliveries);
 		int beginning = 0;
 		for(int i = 1; i < countTo  ; i++) {
 			ArrayList<String> houseLocation = new ArrayList<String>();
@@ -224,19 +224,12 @@ public class Main {
 		ArrayList[] splitList = new ArrayList[n];
 		
 		for(int i = beginning; i < list.size() ; i += split) {
-            System.out.println(splitList.length);
-            System.out.println(counter);
+            
 			splitList[counter] = new ArrayList<Location>(list.subList(beginning, end));
             
 			beginning = end;
 			end = i+split;
 			if(end+split  > list.size() ) {
-                System.out.println(end);
-                System.out.println(list.size());
-                System.out.println(counter);
-                System.out.println(splitList.length);
-                
-                
 				splitList[counter] = new ArrayList<Location>(list.subList(end, list.size() ));
                 
 
@@ -248,9 +241,7 @@ public class Main {
             counter++;
 
 		}
-		for(int i = 0; i < splitList.length; i++) {
-			System.out.println(splitList[i]);
-		}
+		
 		
 		return splitList;
 	}
