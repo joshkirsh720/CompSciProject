@@ -120,10 +120,12 @@ public class Main {
 		//separates original list elements into their own spot in the array
 		//ex. "1s,44a,EE" gets separated to "1s","44a","EE"
 		for(int i = 0; i < list.size(); i++) {
-			
+            System.out.println(list.size() + "Thats so raven");
+
 			String arrayGet = list.get(i);
 			int startGrab = 0;
 			for(int x = 0; x < arrayGet.length(); x++) {
+                
 				if(arrayGet.charAt(x) == ',') {
 					separatedList.add(arrayGet.substring(startGrab, x));
 					startGrab = x+1;
@@ -137,6 +139,7 @@ public class Main {
 		
 		//removes all unecessary letters like the s and a at the end of the first 2 elements in each location
 		for(int i = 0; i < separatedList.size(); i++) {
+            System.out.println(separatedList.size() + "uadhaoiwfeiouwiu");
 			
 			String arrayGet = separatedList.get(i);
 			StringBuilder sb = new StringBuilder(arrayGet);
@@ -156,17 +159,19 @@ public class Main {
 		
 		//creates locations based off of what is now in the cleaned list and adds them to the final list
         System.out.println(bartDeliveries+lisaDeliveries + "YAYAYAYAYYAYAYAYAY JOAWSH");
-		int countTo = packagesToDeliver - (bartDeliveries+lisaDeliveries);
+		int countTo = packagesToDeliver - (bartDeliveries+lisaDeliveries) ;
 		int beginning = 0;
 		for(int i = 1; i < countTo  ; i++) {
 			ArrayList<String> houseLocation = new ArrayList<String>();
             System.out.println(countTo / 3.0 + "LOLZ");
+            
 			int end = 3*i;
-			
+            System.out.println(end / 3.0 + "LadOLZ");
+
 			for(int x = beginning; x <= end; x++) {
                 System.out.println(x + "x=");
                 
-                
+                cleanedList.get(x);
 				System.out.println(cleanedList.size());
                 houseLocation.add(cleanedList.get(x));
 			}
@@ -181,9 +186,12 @@ public class Main {
 
         
 		if(bartDeliveries != 0) {
+            System.out.println("fwhiuegwfihwuihwiufhiwhif");
 			finalList.add(bartComplexLocation);
 		}
 		if(lisaDeliveries != 0) {
+            System.out.println("fwhiuegwfihwuihwiufhiwhif");
+
 			finalList.add(lisaComplexLocation);
 		}
 		
