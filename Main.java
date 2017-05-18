@@ -14,6 +14,7 @@ public class Main {
 	static Location lisaComplexLocation = new Location(297,329,2);
     
 	public static void main(String[] args) throws IOException {
+		System.out.println("ay lmao");
 		Town town = new Town();
 		town.init();
 		
@@ -162,11 +163,11 @@ public class Main {
             System.out.println(countTo / 3.0 + "LOLZ");
 			int end = 3*i;
 			
-			for(int x = beginning; x < end; x++) {
+			for(int x = beginning; x <= end; x++) {
                 System.out.println(x + "x=");
                 
                 
-
+				System.out.println(cleanedList.size());
                 houseLocation.add(cleanedList.get(x));
 			}
 			beginning = end;
