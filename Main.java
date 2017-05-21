@@ -14,56 +14,56 @@ public class Main {
 	static Location lisaComplexLocation = new Location(297,329,2);
     
 	public static void main(String[] args) throws IOException {
-		System.out.println("ay lmao");
+		//System.out.println("ay lmao");
 		Town town = new Town();
 		town.init();
-		
-        
-        
-        for(int III = 1; III < 100; III++){
-            int trucks = III;
-            
-            ArrayList<String> list = readFile();
-            ArrayList<Location> deliveryLocationList = convertStringArrayToLocations(list);
-            ArrayList<Location>[] chunks = splitList(deliveryLocationList, trucks);
-            
-			double max = -1;
-			if(trucks == 1) {
-				Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
-				truck.pathfind(deliveryLocationList);
-				max = truck.getTime();
-			}
-            else {
-                for(int i = 0; i < trucks; i++) {
-                    Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
-                    truck.pathfind(chunks[i]);
-                    if(max == -1) {
-                        max = truck.getTime();
-                    }
-                    else if(truck.getTime() > max) {
-                        max = truck.getTime();
-                    }
-                }
-			}
-			System.out.println(III + "Total time for " + trucks + " trucks to deliver is " + (max/3600) + " hours");
-				if((max/3600) < 24 ){
-					System.out.println("done");
-					break;
+		for(int cycle = 1; cycle <=10; cycle++) {
+			String fileName = "cycles/cycle" + cycle + ".txt";
+			
+			for(int III = 1; III < 100; III++){
+				int trucks = III;
+				
+				ArrayList<String> list = readFile(fileName);
+				ArrayList<Location> deliveryLocationList = convertStringArrayToLocations(list);
+				ArrayList<Location>[] chunks = splitList(deliveryLocationList, trucks);
+				
+				double max = -1;
+				if(trucks == 1) {
+					Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
+					truck.pathfind(deliveryLocationList);
+					max = truck.getTime();
 				}
-        
-        }
+				else {
+					for(int i = 0; i < trucks; i++) {
+						Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
+						truck.pathfind(chunks[i]);
+						if(max == -1) {
+							max = truck.getTime();
+						}
+						else if(truck.getTime() > max) {
+							max = truck.getTime();
+						}
+					}
+				}
+				
+					if((max/3600) < 24 ){
+						System.out.println("Cycle " + cycle + ": Total time for " + trucks + " trucks to deliver is " + (max/3600) + " hours");
+						break;
+					}      
+			}
+		}
 		//TODO
 	}
 	
 	
 	
-    public static ArrayList<String> readFile() throws IOException {
+    public static ArrayList<String> readFile(String fileName) throws IOException {
         ArrayList<String> list = new ArrayList<String>();
 		
 
         try {
 
-            File f = new File("Untitled.txt");
+            File f = new File(fileName);
             
             BufferedReader bufferedReader = new BufferedReader(new FileReader(f));
             
@@ -72,7 +72,7 @@ public class Main {
 			int counter=0;
 			boolean bartGet=false,lisaGet=false;
             while ((readLine = bufferedReader.readLine()) != null) {
-                System.out.println(readLine);
+                //System.out.println(readLine);
                 counter++;
 				if(counter==1) {
 					continue;
@@ -120,7 +120,7 @@ public class Main {
 		//separates original list elements into their own spot in the array
 		//ex. "1s,44a,EE" gets separated to "1s","44a","EE"
 		for(int i = 0; i < list.size(); i++) {
-            System.out.println(list.size() + "Thats so raven");
+            // System.out.println(list.size() + "Thats so raven");
 
 			String arrayGet = list.get(i);
 			int startGrab = 0;
@@ -139,7 +139,7 @@ public class Main {
 		
 		//removes all unecessary letters like the s and a at the end of the first 2 elements in each location
 		for(int i = 0; i < separatedList.size(); i++) {
-            System.out.println(separatedList.size() + "uadhaoiwfeiouwiu");
+            // System.out.println(separatedList.size() + "uadhaoiwfeiouwiu");
 			
 			String arrayGet = separatedList.get(i);
 			StringBuilder sb = new StringBuilder(arrayGet);
@@ -158,21 +158,21 @@ public class Main {
 		//System.out.println(2 + "" + cleanedList);
 		
 		//creates locations based off of what is now in the cleaned list and adds them to the final list
-        System.out.println(bartDeliveries+lisaDeliveries + "YAYAYAYAYYAYAYAYAY JOAWSH");
+        // System.out.println(bartDeliveries+lisaDeliveries + "YAYAYAYAYYAYAYAYAY JOAWSH");
 		int countTo = packagesToDeliver - (bartDeliveries+lisaDeliveries) ;
 		int beginning = 0;
 		for(int i = 1; i < countTo  ; i++) {
 			ArrayList<String> houseLocation = new ArrayList<String>();
-            System.out.println(countTo / 3.0 + "LOLZ");
+            // System.out.println(countTo / 3.0 + "LOLZ");
             
 			int end = 3*i;
-            System.out.println(end / 3.0 + "LadOLZ");
+            // System.out.println(end / 3.0 + "LadOLZ");
 
 			for(int x = beginning; x <= end; x++) {
-                System.out.println(x + "x=");
+                // System.out.println(x + "x=");
                 
                 cleanedList.get(x);
-				System.out.println(cleanedList.size());
+				// System.out.println(cleanedList.size());
                 houseLocation.add(cleanedList.get(x));
 			}
 			beginning = end;
@@ -180,17 +180,17 @@ public class Main {
 			
 			finalList.add(determineLocation(houseLocation));
 		}
-        System.out.println("YAS JOSH");
+        /* System.out.println("YAS JOSH"); 
         System.out.println(bartDeliveries);
-        System.out.println(lisaDeliveries);
+        System.out.println(lisaDeliveries);*/
 
         
 		if(bartDeliveries != 0) {
-            System.out.println("fwhiuegwfihwuihwiufhiwhif");
+            //System.out.println("fwhiuegwfihwuihwiufhiwhif");
 			finalList.add(bartComplexLocation);
 		}
 		if(lisaDeliveries != 0) {
-            System.out.println("fwhiuegwfihwuihwiufhiwhif");
+            //System.out.println("fwhiuegwfihwuihwiufhiwhif");
 
 			finalList.add(lisaComplexLocation);
 		}

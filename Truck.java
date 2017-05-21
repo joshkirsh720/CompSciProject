@@ -109,7 +109,7 @@ public class Truck {
 				addPackageTime();
 			}
 		}
-        System.out.println("The time in Hours Is " + ( this.getTime()/3600 ));
+        //System.out.println("The time in Hours Is " + ( this.getTime()/3600 ));
 	}
 	
 	public int getX() {
