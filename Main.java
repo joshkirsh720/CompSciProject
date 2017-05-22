@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Main {
     
-	static int bartDeliveries = 0, lisaDeliveries = 0, packagesToDeliver;
+	static int bartDeliveries = 0, lisaDeliveries = 0, packagesToDeliver, cost = 0;
 	static Location bartComplexLocation = new Location(3,29,1);
 	static Location lisaComplexLocation = new Location(297,329,2);
     
@@ -17,9 +17,18 @@ public class Main {
 		//System.out.println("ay lmao");
 		Town town = new Town();
 		town.init();
+		
+		Truck truck1 = new Truck(2);
+		Truck truck2 = new Truck(2);
+		Truck truck3 = new Truck(2);
+		cost += 300000;
+		Truck[] truckList = {truck1, truck2, truck3};
+		
 		for(int cycle = 1; cycle <=10; cycle++) {
-			String fileName = "cycles/cycle" + cycle + ".txt";
 			
+			String fileName = "cycles/cycle" + cycle + ".txt";
+			int optimalTrucks = -1;
+			//this loop is just to figure out how many trucks are necessarys
 			for(int III = 1; III < 100; III++){
 				int trucks = III;
 				
@@ -30,12 +39,14 @@ public class Main {
 				double max = -1;
 				if(trucks == 1) {
 					Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
+					truck.setPackages(packagesToDeliver);
 					truck.pathfind(deliveryLocationList);
 					max = truck.getTime();
 				}
 				else {
 					for(int i = 0; i < trucks; i++) {
 						Truck truck = new Truck(2, bartDeliveries, lisaDeliveries);
+						truck.setPackages(packagesToDeliver);
 						truck.pathfind(chunks[i]);
 						if(max == -1) {
 							max = truck.getTime();
@@ -47,11 +58,62 @@ public class Main {
 				}
 				
 					if((max/3600) < 24 ){
-						System.out.println("Cycle " + cycle + ": Total time for " + trucks + " trucks to deliver is " + (max/3600) + " hours");
+						System.out.println("Cycle " + cycle + ": " + trucks + " trucks in " + (max/3600) + " hours");
+						optimalTrucks = trucks;
 						break;
 					}      
 			}
+			
+			//resets location
+			for(int a = 0; a < 3; a++) {
+				truckList[a].setX(249);
+				truckList[a].setX(219);
+			}
+			
+			//this does the actual run
+			ArrayList<String> list = readFile(fileName);
+			ArrayList<Location> deliveryLocationList = convertStringArrayToLocations(list);
+			ArrayList<Location>[] chunks = splitList(deliveryLocationList, optimalTrucks);
+			
+			if(optimalTrucks <= 3) {
+				for(int m = 0; m < optimalTrucks; m++) {
+					truckList[m].setPackages(packagesToDeliver);
+					truckList[m].pathfind(chunks[m]);
+					truckList[m].calculateDistance();
+					double time = truckList[m].getTime() / 3600;
+					time -= 8;
+					cost += 2 * ((30 * 8) + (time * 45));
+				}
+			}
+			else {
+				for(int m = 0; m < 3; m++) {
+					truckList[m].setPackages(packagesToDeliver);
+					truckList[m].pathfind(chunks[m]);
+					truckList[m].calculateDistance();
+					double time = truckList[m].getTime() / 3600;
+					time -= 8;
+					cost += 2 * ((30 * 8) + (time * 45));
+				}
+				
+				//pathfind fourth rented one and add cost
+				cost += 15000;
+				
+				Truck truck = new Truck(2);
+				truck.setPackages(packagesToDeliver);
+				truck.pathfind(chunks[3]);
+				double distance = truck.calculateDistance();
+				double time = truck.getTime() / 3600;
+				time -= 8;
+				cost += 2 * ((30 * 8) + (time * 45));
+				cost += distance * 5;
+			}
 		}
+		
+		for(int i = 0; i < truckList.length; i++) {
+			cost += truckList[i].getDistance() * 10;
+		}
+		
+		System.out.println("Total Cost: $" + cost);
 		//TODO
 	}
 	

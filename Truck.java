@@ -4,9 +4,17 @@ import java.util.ArrayList;
 
 public class Truck {
     private int x, y, workers, time;
-	private int bartDeliveries, lisaDeliveries;
+	private int bartDeliveries, lisaDeliveries, packages;
+	private double distance = 0;
     
-    
+    public Truck(int w) {
+		x = 249;
+		y = 219;
+		workers = w;
+		bartDeliveries = 0;
+		lisaDeliveries = 0;
+	}
+	
 	public Truck(int w, int bD, int lD) {
 		x = 249;
 		y = 219;
@@ -112,6 +120,15 @@ public class Truck {
         //System.out.println("The time in Hours Is " + ( this.getTime()/3600 ));
 	}
 	
+	public double calculateDistance() {
+		double moveTime = this.getTime() - (30 * packages);
+		distance += moveTime / 3 * 100 / 5000;
+		return distance;
+	}
+	public double getDistance() {
+		return distance;
+	}
+	
 	public int getX() {
 		return x;
 	}
@@ -125,6 +142,21 @@ public class Truck {
 	public void setY(int yVal) {
 		y = yVal;
 	}
+	
+	public void setBart(int newBart) {
+		bartDeliveries = newBart;
+	}
+	public void setLisa(int newLisa) {
+		lisaDeliveries = newLisa;
+	}
+	
+	public void setPackages(int newPack) {
+		packages = newPack;
+	}
+	public int getPackages() {
+		return packages;
+	}
+	
     public void addTime(int MoreTime){
         time += MoreTime;
     }
