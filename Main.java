@@ -107,10 +107,12 @@ public class Main {
 				cost += 2 * ((30 * 8) + (time * 45));
 				cost += distance * 5;
 			}
+            System.out.println("YAS COST" + cost);
 		}
 		
 		for(int i = 0; i < truckList.length; i++) {
 			cost += truckList[i].getDistance() * 10;
+            System.out.println(cost + "wfehuihiuwehuiwefhiuhuiwefihu");
 		}
 		
 		System.out.println("Total Cost: $" + cost);
