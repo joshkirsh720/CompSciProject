@@ -74,7 +74,8 @@ public class Main {
 			ArrayList<String> list = readFile(fileName);
 			ArrayList<Location> deliveryLocationList = convertStringArrayToLocations(list);
 			ArrayList<Location>[] chunks = splitList(deliveryLocationList, optimalTrucks);
-			
+            double OriginalCost = cost;
+            
 			if(optimalTrucks <= 3) {
 				for(int m = 0; m < optimalTrucks; m++) {
 					truckList[m].setPackages(packagesToDeliver);
@@ -104,17 +105,23 @@ public class Main {
 				double distance = truck.calculateDistance();
 				double time = truck.getTime() / 3600;
 				time -= 8;
+                
 				cost += 2 * ((30 * 8) + (time * 45));
 				cost += distance * 5;
+                
+                
+                
 			}
-            System.out.println("YAS COST" + cost);
+            System.out.println("Day's Cost" +  (cost -  OriginalCost));
+            
+            
 		}
 		
 		for(int i = 0; i < truckList.length; i++) {
 			cost += truckList[i].getDistance() * 10;
-            System.out.println(cost + "wfehuihiuwehuiwefhiuhuiwefihu");
-		}
+        }
 		
+        
 		System.out.println("Total Cost: $" + cost);
 		//TODO
 	}
