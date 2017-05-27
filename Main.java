@@ -12,7 +12,7 @@ public class Main {
 	static int bartDeliveries = 0, lisaDeliveries = 0, packagesToDeliver, cost = 0;
 	static Location bartComplexLocation = new Location(3,29,1);
 	static Location lisaComplexLocation = new Location(297,329,2);
-    
+    static double OriginalCost = 0;
 	public static void main(String[] args) throws IOException {
 		//System.out.println("ay lmao");
 		Town town = new Town();
@@ -59,7 +59,9 @@ public class Main {
 				
 					if((max/3600) < 24 ){
 						System.out.println("Cycle " + cycle + ": " + trucks + " trucks in " + (max/3600) + " hours");
-						optimalTrucks = trucks;
+                        System.out.println("Day's Cost" +  (cost -  OriginalCost));
+
+                        optimalTrucks = trucks;
 						break;
 					}      
 			}
@@ -74,9 +76,9 @@ public class Main {
 			ArrayList<String> list = readFile(fileName);
 			ArrayList<Location> deliveryLocationList = convertStringArrayToLocations(list);
 			ArrayList<Location>[] chunks = splitList(deliveryLocationList, optimalTrucks);
-            double OriginalCost = cost;
+             OriginalCost = cost;
             
-			if(optimalTrucks <= 3) {
+			if(optimalTrucks <= 2) {
 				for(int m = 0; m < optimalTrucks; m++) {
 					truckList[m].setPackages(packagesToDeliver);
 					truckList[m].pathfind(chunks[m]);
@@ -87,7 +89,7 @@ public class Main {
 				}
 			}
 			else {
-				for(int m = 0; m < 3; m++) {
+				for(int m = 0; m < 2; m++) {
 					truckList[m].setPackages(packagesToDeliver);
 					truckList[m].pathfind(chunks[m]);
 					truckList[m].calculateDistance();
@@ -97,22 +99,28 @@ public class Main {
 				}
 				
 				//pathfind fourth rented one and add cost
-				cost += 15000;
-				
-				Truck truck = new Truck(2);
-				truck.setPackages(packagesToDeliver);
-				truck.pathfind(chunks[3]);
-				double distance = truck.calculateDistance();
-				double time = truck.getTime() / 3600;
-				time -= 8;
+                for (int m = 2; m < optimalTrucks - 2; m++){
                 
-				cost += 2 * ((30 * 8) + (time * 45));
-				cost += distance * 5;
+                    cost += 15000;
+                    
+        
+                    Truck truck = new Truck(m);
+                    truck.setPackages(packagesToDeliver);
+                    truck.pathfind(chunks[m]);
+                    double distance = truck.calculateDistance();
+                    double time = truck.getTime() / 3600;
+                    time -= 8;
+                    cost += 2 * ((30 * 8) + (time * 45));
+                    cost += distance * 5;
+                    
+
                 
+                }
                 
+
+              
                 
 			}
-            System.out.println("Day's Cost" +  (cost -  OriginalCost));
             
             
 		}
@@ -121,7 +129,7 @@ public class Main {
 			cost += truckList[i].getDistance() * 10;
         }
 		
-        
+
 		System.out.println("Total Cost: $" + cost);
 		//TODO
 	}
@@ -161,7 +169,6 @@ public class Main {
 					lisaGet=true;
 					continue;
 				}
-				
 				if(bartGet==true) {
 					bartDeliveries=Integer.parseInt(readLine);
 					bartGet=false;
